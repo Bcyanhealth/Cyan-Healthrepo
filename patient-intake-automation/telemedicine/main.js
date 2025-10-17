@@ -17,7 +17,7 @@ const ROOT_FOLDER_ID = '1K0KevC96ex7wjxEQcp7aBpUM-XxCxNGa';
 const DEST_SUBFOLDER = 'telemedicine'; // <- set per form
 
 /** 3) Match your form's exact field titles (headers in the responses Sheet) */
-const PATIENT_ID_FIELDS = ['Patient id'];  // unique key (you said your form has "Patient ID")
+const PATIENT_ID_FIELDS = ['Patient ID'];  // unique key (you said your form has "Patient ID")
 const FIRST_NAME_FIELDS = ['First Name'];  // readable label (you said your form has "First Name")
 const FULL_NAME_FIELDS  = [];              // not used (no "Full Name" in your form)
 

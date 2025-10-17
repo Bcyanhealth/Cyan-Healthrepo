@@ -20,13 +20,12 @@ const ROOT_FOLDER_ID = '1K0KevC96ex7wjxEQcp7aBpUM-XxCxNGa';
  *    - Payments:             'Payments'
  *    - Telemedicine Payment: 'Telemedicine Payments'
  */
-const DEST_SUBFOLDER = 'Consultations-notes'; // <- set per form
+const DEST_SUBFOLDER = 'Details'; // <- set per form
 
 /** 3) Match your form's exact field titles (headers in the responses Sheet) */
 const PATIENT_ID_FIELDS = ['Patient ID'];  // unique key (you said your form has "Patient ID")
 const FIRST_NAME_FIELDS = ['First Name'];  // readable label (you said your form has "First Name")
-const FULL_NAME_FIELDS  = [];   
-
+const FULL_NAME_FIELDS  = [];              // not used (no "Full Name" in your form)
 
 /** Sheet column headers to write back */
 const COL_PATIENT_FOLDER_LINK = 'Patient Folder';
@@ -66,7 +65,9 @@ function onFormSubmit(e) {
   const stamp = Utilities.formatDate(new Date(), TZ, "yyyy-MM-dd'_'HHmmss");
   const runFolder = destFolder.createFolder(stamp);
 
-
+  // 6) Save responses.json
+  const json = JSON.stringify(nv, null, 2);
+  runFolder.createFile('responses.json', json, MimeType.PLAIN_TEXT);
 
   // 7) Create a summary Doc
   const docTitle = `${DEST_SUBFOLDER.toUpperCase()}__${patientId}__${stamp}`;
